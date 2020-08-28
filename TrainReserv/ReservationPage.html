@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <script src="angular-1.7.2/angular.js"></script>
+    <script src="angular-1.7.2/angular.min.js"></script>
+    <script src="Script.js"></script>
+
+    <title>Ticket Reservation</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body ng-app="beginReservation">
+    <h2>Ticket Reservation</h2>
+    <form name="form" novalidate>
+        <div ng-controller="bookingController">
+            <table>
+                <tr>
+                    <td>
+                        TicketID :
+                    </td>
+                    <td>
+                        <input type="text" name="TicketID" ng-model="TicketID" only-digits required autofocus />
+                        <span ng-show="form.TicketID.$touched && form.TicketID.$invalid ">
+                            <span ng-show="form.TicketID.$error.required " style="color:red">*</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TicketNumber :
+                    </td>
+                    <td>
+                        <input name="TicketNumber" type="text" ng-model="TicketNumber" readonly="readonly" ng-click="RandNumber()" required autofocus />
+                        <span ng-show="form.TicketNumber.$touched && form.TicketNumber.$invalid">
+                            <span ng-show="form.TicketNumber.$error.required" style="color:red">*</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Price :
+                    </td>
+                    <td>
+                        <select name="Price" ng-model="unitPrice" required>
+                            <option>-- select an option --</option>
+                            <option> 250  </option>
+                            <option>300</option>
+                            <option>350</option>
+                            <option>400</option>
+                        </select>
+                        <span ng-show="form.Price.$touched && form.Price.$invalid">
+                            <span ng-show="form.Price.$error.required" style="color:red">*</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NumberOfPassenger:
+                    </td>
+                    <td>
+                        <input name="NumberOfPassenger" type="number" ng-model="Numberofpassenger" min="1" ng-change="Calculate()" required  />
+                        <span ng-show="form.NumberOfPassenger.$touched && form.NumberOfPassenger.$invalid">
+                            <span ng-show="form.NumberOfPassenger.$error.required" style="color:red">*</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TotalCost :
+                    </td>
+                    <td>
+                        <input name="TotalCost"  ng-model="totalCost" readonly="readonly" only-digits required />
+                        <!--<input type="button" value="Calculate" ng-click="Calculate()" />-->
+                        <span ng-show="form.TotalCost.$touched && form.TotalCost.$invalid">
+                            <span ng-show="form.TotalCost.$error.required" style="color:red">*</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        DateofTravel :
+                    </td>
+                    <td>
+                        <input name="DateofTravel" type="date" ng-model="DateofTravel" required />
+                        <span ng-show="form.DateofTravel.$touched && form.DateofTravel.$invalid">
+                            <span ng-show="form.DateofTravel.$error.required" style="color:red">*</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Booked BY :
+                    </td>
+                    <td>
+                        <input name="BookedBY" type="text" ng-model="BookedBY" only-characters required />
+                        <span ng-show="form.BookedBY.$touched && form.BookedBY.$invalid">
+                            <span ng-show="form.BookedBY.$error.required" style="color:red">*</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div style="align-content:center; margin-left:40%;">
+                            <input type="checkbox" ng-model="terms" name="terms" id="terms" required />
+                            <label for="terms">I Agree to the terms.</label>
+                            <span ng-show="form.terms.$touched && form.terms.$invalid">
+                                <span ng-show="form.terms.$error.required" style="color:red">*</span>
+                            </span>
+                            <input ng-model="button" type="button" ng-disabled="form.terms.$error.required" id="button" value="Save" ng-click="Save()" />
+                            <span>{{msg}}</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </form>
+    <p><b>Note:</b>Please Enter the Field marked Astriek</p>
+</body>
+</html>
