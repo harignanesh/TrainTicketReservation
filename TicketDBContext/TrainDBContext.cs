@@ -10,7 +10,7 @@ namespace TRDBContext
 {
    public class TrainDBContext:DbContext
     {
-        public TrainDBContext() : base(@"Data Source=IN8INE0471\SQLEXPRESS;Initial Catalog=TESTDB;Integrated Security=True")
+        public TrainDBContext() : base(@"Data Source=.;Initial Catalog=TESTDB;Integrated Security=True")
         {
         }
         public DbSet<TrainTicketInfo> TicketInfos { get; set; }

@@ -138,6 +138,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\Logo.jpg" />
+    <Content Include="Images\train.jpg" />
     <Content Include="ReservationPage.html" />
     <Content Include="Script.js" />
     <Content Include="Web.config" />

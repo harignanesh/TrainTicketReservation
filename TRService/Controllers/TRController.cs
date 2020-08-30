@@ -7,6 +7,8 @@ using System.Web.Http;
 using TRModels;
 using TRDBContext;
 using System.Web.Http.Cors;
+using TRService.Managers;
+using TRService.IManager;
 
 namespace TRService.Controllers
 {
@@ -15,6 +17,7 @@ namespace TRService.Controllers
     {
         // GET api/TR
         TrainDBContext trDBContext = new TrainDBContext();
+        TRManager TRManager = new TRManager();
         [HttpGet]
         public IEnumerable<TrainTicketInfo> Get()
         {
@@ -35,6 +38,7 @@ namespace TRService.Controllers
             {
                 trDBContext.TicketInfos.Add(objTR);
                 trDBContext.SaveChanges();
+                TRManager.SendEmail(objTR);
             }
             catch (Exception ex)
             {

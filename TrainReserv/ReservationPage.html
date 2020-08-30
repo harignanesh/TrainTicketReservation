@@ -27,27 +27,19 @@
     </style>
 </head>
 <body ng-app="beginReservation">
-    <h2>Ticket Reservation</h2>
+    <h2 style="text-align:center">Ticket Reservation Form</h2>
+    <img src="Images/train.jpg" />
+    <img style="padding-left:56%;width:11%" src="Images/Logo.jpg" />
     <form name="form" novalidate>
         <div ng-controller="bookingController">
             <table>
-                <tr>
-                    <td>
-                        TicketID :
-                    </td>
-                    <td>
-                        <input type="text" name="TicketID" ng-model="TicketID" only-digits required autofocus />
-                        <span ng-show="form.TicketID.$touched && form.TicketID.$invalid ">
-                            <span ng-show="form.TicketID.$error.required " style="color:red">*</span>
-                        </span>
-                    </td>
-                </tr>
+
                 <tr>
                     <td>
                         TicketNumber :
                     </td>
                     <td>
-                        <input name="TicketNumber" type="text" ng-model="TicketNumber" readonly="readonly" ng-click="RandNumber()" required autofocus />
+                        <input name="TicketNumber" type="text" ng-model="TicketNumber" readonly="readonly"  required autofocus />
                         <span ng-show="form.TicketNumber.$touched && form.TicketNumber.$invalid">
                             <span ng-show="form.TicketNumber.$error.required" style="color:red">*</span>
                         </span>
@@ -55,19 +47,14 @@
                 </tr>
                 <tr>
                     <td>
-                        Price :
+                        Place :
                     </td>
                     <td>
-                        <select name="Price" ng-model="unitPrice" required>
-                            <option>-- select an option --</option>
-                            <option> 250  </option>
-                            <option>300</option>
-                            <option>350</option>
-                            <option>400</option>
+                        <select ng-model="selectedPlace" ng-click="priceforPlace(selectedPlace)">
+                            <option name="Place" ng-repeat="item in place">{{item.Name}}</option>
+
                         </select>
-                        <span ng-show="form.Price.$touched && form.Price.$invalid">
-                            <span ng-show="form.Price.$error.required" style="color:red">*</span>
-                        </span>
+
                     </td>
                 </tr>
                 <tr>
@@ -75,7 +62,7 @@
                         NumberOfPassenger:
                     </td>
                     <td>
-                        <input name="NumberOfPassenger" type="number" ng-model="Numberofpassenger" min="1" ng-change="Calculate()" required  />
+                        <input name="NumberOfPassenger" type="number" ng-model="Numberofpassenger" min="1" ng-change="Calculate()" required />
                         <span ng-show="form.NumberOfPassenger.$touched && form.NumberOfPassenger.$invalid">
                             <span ng-show="form.NumberOfPassenger.$error.required" style="color:red">*</span>
                         </span>
@@ -86,7 +73,7 @@
                         TotalCost :
                     </td>
                     <td>
-                        <input name="TotalCost"  ng-model="totalCost" readonly="readonly" only-digits required />
+                        <input name="TotalCost" ng-model="totalCost" readonly="readonly" only-digits required />
                         <!--<input type="button" value="Calculate" ng-click="Calculate()" />-->
                         <span ng-show="form.TotalCost.$touched && form.TotalCost.$invalid">
                             <span ng-show="form.TotalCost.$error.required" style="color:red">*</span>
@@ -116,6 +103,14 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        EmailId :
+                    </td>
+                    <td>
+                        <input type="text" name="EmailId" ng-model="EmailId" ng-blur="ValidateEmail(EmailId)" required  />
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <div style="align-content:center; margin-left:40%;">
                             <input type="checkbox" ng-model="terms" name="terms" id="terms" required />
@@ -123,7 +118,7 @@
                             <span ng-show="form.terms.$touched && form.terms.$invalid">
                                 <span ng-show="form.terms.$error.required" style="color:red">*</span>
                             </span>
-                            <input ng-model="button" type="button" ng-disabled="form.terms.$error.required" id="button" value="Save" ng-click="Save()" />
+                            <input ng-model="button" type="button" ng-disabled="form.terms.$error.required && form.terms.$invalid" id="button" value="Save" ng-click="Save()" />
                             <span>{{msg}}</span>
                         </div>
                     </td>

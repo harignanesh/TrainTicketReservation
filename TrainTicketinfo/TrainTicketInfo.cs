@@ -13,14 +13,14 @@ namespace TRModels
     {
         [Key]
         public int TID { get; set; }
-        public int TicketID { get; set; }
+    
         public int TicketNumber { get; set; }
         public decimal Price { get; set; }
         public int NumberOfPassenger { get; set; }
         public decimal TotalCost { get; set; }
         public DateTime DateofTravel { get; set; }
         public string BookedBY { get; set; }
-
+        public string EmailId { get; set; }
 
         //TicketID int,
         //TicketNumber int,
