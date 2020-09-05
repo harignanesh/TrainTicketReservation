@@ -21,9 +21,12 @@ namespace TRService.Managers
 
             mail.From = new MailAddress("traintickettesting01@gmail.com");
             mail.To.Add(objTR.EmailId);
-            mail.Subject = "<b> Train Ticket Has Been SuccessFully Booked By : " + objTR.BookedBY + "<b>";
-            mail.Body = "This is for testing SMTP mail from GMAIL";
-
+            mail.Subject = "Train Ticket Has Been SuccessFully Booked By : " + objTR.BookedBY + "\n" ;
+            mail.Body += "Your Ticket Number is " + objTR.TID + "\n";
+            mail.Body += "------------------------------------" + "\n";
+            mail.Body += "Number of Passenger :" + objTR.NumberOfPassenger + "\n";
+            mail.Body += "Total Cost :" + objTR.TotalCost + "\n";
+            mail.Body += "Place of Travel :" + objTR.Place + "\n";
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential("traintickettesting01@gmail.com", "trainticket123");
             SmtpServer.EnableSsl = true;

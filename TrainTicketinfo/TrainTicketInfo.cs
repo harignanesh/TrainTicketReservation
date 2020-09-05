@@ -21,6 +21,7 @@ namespace TRModels
         public DateTime DateofTravel { get; set; }
         public string BookedBY { get; set; }
         public string EmailId { get; set; }
+        public string Place { get; set; }
 
         //TicketID int,
         //TicketNumber int,

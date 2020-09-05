@@ -73,7 +73,7 @@ App.controller('bookingController', function ($scope, $http) {
     $scope.Save = function () {
 
         // alert("enter Save fn");
-        var Userdata = { EmailID: $scope.EmailId, TicketNumber: $scope.TicketNumber, Price: $scope.unitPrice, NumberOfPassenger: $scope.Numberofpassenger, TotalCost: $scope.totalCost, DateofTravel: $scope.DateofTravel, BookedBY: $scope.BookedBY };
+        var Userdata = { EmailID: $scope.EmailId, TicketNumber: $scope.TicketNumber, Price: $scope.unitPrice, NumberOfPassenger: $scope.Numberofpassenger, TotalCost: $scope.totalCost, DateofTravel: $scope.DateofTravel, BookedBY: $scope.BookedBY, Place: $scope.Place };
         //validate();
         console.log(Userdata);
         $http({
